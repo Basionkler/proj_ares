@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repositories\UserRepository")
  * @ORM\Table(name="user")
  */
 class User
@@ -393,5 +393,9 @@ class User
     public function getNickname()
     {
         return $this->nickname;
+    }
+
+    public function checkPassword($password) {
+        return strcmp($this->password,$password) == 0;
     }
 }

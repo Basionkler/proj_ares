@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h1>{{ 'title.post_new'|trans }}</h1>
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_label(form.nickname) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_widget(form.nickname,{ 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_errors(form.nickname) }}
+        </div>
+    </div>
+    {{ form_row(form.name) }}
+    {{ form_row(form.lastname) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+
+    {{ form_widget(form.createNewUser, {label: 'label.createNewUser', attr: {class: 'btn btn-primary'}}) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block stylesheets %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+{% endblock %}

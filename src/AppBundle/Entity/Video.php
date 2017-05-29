@@ -79,21 +79,21 @@ class Video
 
     /**
      * Many Videos have one Language
-     * @ORM\ManyToOne(targetEntity="Language", inversedBy="video")
+     * @ORM\ManyToOne(targetEntity="Language", inversedBy="videos")
      * @ORM\JoinColumn(name="language_id", referencedColumnName="language_id")
      */
     private $language;
 
     /**
      * Many Videos have one Category
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="video")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="videos")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="category_id")
      */
     private $category;
 
     /**
      * Many Videos have many Playlists
-     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="video")
+     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="videos")
      * @ORM\JoinTable(name="video_playlist",
      *      joinColumns={@ORM\JoinColumn(name="video_id", referencedColumnName="video_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="playlist_id", referencedColumnName="playlist_id")}

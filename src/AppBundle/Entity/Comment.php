@@ -33,7 +33,7 @@ class Comment
 
     /**
      * Many Comments have one Video
-     * @ORM\ManyToOne(targetEntity="Video", inversedBy="comment")
+     * @ORM\ManyToOne(targetEntity="Video", inversedBy="comments")
      * @ORM\JoinColumn(name="video_id", referencedColumnName="video_id")
      */
     private $video;

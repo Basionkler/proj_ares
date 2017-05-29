@@ -46,7 +46,7 @@ class Answer
 
     /**
      * Many Answer has one Comment
-     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="answer")
+     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="answers")
      * @ORM\JoinColumn(name="comment_id", referencedColumnName="comment_id")
      */
     private $comment;

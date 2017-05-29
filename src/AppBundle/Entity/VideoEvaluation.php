@@ -33,7 +33,7 @@ class VideoEvaluation
 
     /**
      * Many VideoEvaluations have one Video
-     * @ORM\ManyToOne(targetEntity="Video", inversedBy="video_evaluation")
+     * @ORM\ManyToOne(targetEntity="Video", inversedBy="evaluations")
      * @ORM\JoinColumn(name="video_id", referencedColumnName="video_id")
      */
     private $video;

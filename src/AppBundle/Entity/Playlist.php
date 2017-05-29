@@ -33,7 +33,7 @@ class Playlist
 
     /**
      * Many Playlists have many Videos
-     * @ORM\ManyToMany(targetEntity="Video", mappedBy="playlist")
+     * @ORM\ManyToMany(targetEntity="Video", mappedBy="playlists")
      */
     private $videos;
 

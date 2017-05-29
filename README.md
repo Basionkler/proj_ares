@@ -4,6 +4,15 @@ proj_ares
 @Author Federico:
 Changelog 29/05/2017 -
 --------
+• New folder created:
+	- *videos*: This folder will contain videos which are supposed to be loaded to the server
+
+• New files created:
+	- *CommentsController.php*: Located in ..\src\AppBundle\Controller. This should contain all functions reguarding commenting videos, replies and comments evalutaions (Should be better to create a EvaluationController to control both Likes on comments and likes on videos?). Some errors for sure. We need to review that.
+	- *CommentType.php*: Located in ..\src\AppBundle\Form\Type. We need to review this.
+	- *VideoRepository.php*: Located in ..\src\AppBundle\Repositories. Add queries for videos.
+	- *VideoController.php*: Same as previous.
+
 • Fixed some inconsinstance errors. See below for details:
 
 *AppBundle\Entity\VideoEvaluation* 	

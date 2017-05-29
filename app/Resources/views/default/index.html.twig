@@ -6,6 +6,7 @@
 
         {% if app.session %}
             {{ app.session.get('nickname') }} <br><br>
+            {{ path('showvideo') }}
         {% endif %}
 
         <div class="col-md-6 text-center">

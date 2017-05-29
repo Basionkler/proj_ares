@@ -16,5 +16,4 @@ class UserRepository extends EntityRepository {
 
         return $this->getEntityManager()->createQuery('SELECT u FROM AppBundle:User u WHERE u.nickname LIKE :nickname')->setParameter('nickname',$nickname)->getOneOrNullResult();
     }
-
 }

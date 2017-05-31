@@ -13,4 +13,8 @@ class VideoRepository extends EntityRepository{
     public function getAllVideo() {
     	return $this->getEntityManager()->createQuery('SELECT * FROM AppBundle:Video');
     }
+
+    public function getVidById($id) {
+    	return $this->getEntityManager()->createQuery('SELECT v FROM AppBundle:Video v WHERE v.video_id LIKE :id');
+    }
 }

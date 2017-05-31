@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Controller used to manage Videos
- * @Route("/")
+ * @Route("/video")
  */
 class VideoController extends Controller {
 	/**
@@ -27,5 +27,16 @@ class VideoController extends Controller {
     	$entityManager = $this->getDoctrine()->getManager();
     	$videos = $entityManager->getRepository('AppBundle:Video')->findAll();
     	return $this->render('default/index.html.twig', ['videos' => $videos]); //Needs improvements
+    }
+
+    /**
+    * Get video from thumbnail
+    * @Route("/{id}", name="videoById")
+    * @Method({"GET"})
+    */
+    public function getVideo($id) {
+    	$entityManager = $this->getDoctrine()->getManager();
+    	$video = $entityManager->getRepository('AppBundle:Video')->getVidById($id);
+    	return $this->render('vids/videos.html.twig', ['video' => $video]); //Needs improvements
     }
 }

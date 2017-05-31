@@ -1,27 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
 {% block body %}
-<div class="container">
+
+    <h1>{{ 'title.post_new'|trans }}</h1>
+
+    {{ form_start(form) }}
     <div class="row">
-
-        {% if app.session %}
-            {{ app.session.get('nickname') }} <br><br>
-        {% endif %}
-
-        <div class="col-md-6 text-center">
-            <a href="{{ path('user_signin') }}">Login</a>
-        </div>
-        <div class="col-md-6 text-center">
-            <a href="{{ path('user_signup') }}">Registrati</a>
+        <div class="col-md-12">
+            {{ form_row(form.title) }}
         </div>
     </div>
-
     <div class="row">
-        <div class="col-md-12 text-center">
-            <a href="{{ path('load_video') }}">Carica video</a>
+        <div class="col-md-4">
+            {{ form_label(form.language) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_widget(form.language,{ 'attr': {'class': 'form-control'} }) }}
         </div>
     </div>
-</div>
+    {{ form_widget(form.loadNewVideo, {label: 'label.loadNewVideo', attr: {class: 'btn btn-primary'}}) }}
+    {{ form_end(form) }}
+
 {% endblock %}
 
 {% block stylesheets %}

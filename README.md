@@ -1,5 +1,11 @@
 proj_ares
 ========
+Changelog 31/05/2017 - 
+--------
+• New folder created:
+	- *thumbnails* : Temporanea. Insert here thumbnails for videos.
+
+• Temporary commented from line 339 to 358 in Entity 'User.php' (Entity CommentsLiked does NOT exist).
 
 @Author Federico:
 Changelog 29/05/2017 -

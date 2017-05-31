@@ -6,9 +6,18 @@
 
         {% if app.session %}
             {{ app.session.get('nickname') }} <br><br>
-            {{ path('showvideo') }}
         {% endif %}
-
+        {% if videos %}
+            {% set i=0 %}
+            {% for video in videos %}
+            <img src="{{ asset('thumbnails/' ~ video.thumbnail) }}" />
+            <!--
+            <video controls style="width:180px;height:90px;" poster="poster.png">
+                <source src="{{video.link}}" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2" />
+            </video>
+            -->
+            {%endfor%}
+        {% endif %}
         <div class="col-md-6 text-center">
             <a href="{{ path('user_signin') }}">Login</a>
         </div>

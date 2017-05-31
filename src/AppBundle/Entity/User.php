@@ -327,6 +327,7 @@ class User
         return $this->commentsWritten;
     }
 
+
     /**
      * Add commentsLiked
      *
@@ -334,22 +335,27 @@ class User
      *
      * @return User
      */
+
+    /*
     public function addCommentsLiked(\AppBundle\Entity\CommentLike $commentsLiked)
     {
         $this->commentsLiked[] = $commentsLiked;
 
         return $this;
     }
+    */ //NEED TO UNCOMMENT THAT
 
     /**
      * Remove commentsLiked
      *
      * @param \AppBundle\Entity\CommentLike $commentsLiked
      */
+    /*
     public function removeCommentsLiked(\AppBundle\Entity\CommentLike $commentsLiked)
     {
         $this->commentsLiked->removeElement($commentsLiked);
     }
+    */ //WE NEED TO UNCOMMENT THAT
 
     /**
      * Get commentsLiked

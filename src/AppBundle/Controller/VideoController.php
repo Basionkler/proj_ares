@@ -27,7 +27,8 @@ class VideoController extends Controller
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video, array(
             "allow_extra_fields" => array(
-            "languages" => $this->getDoctrine()->getManager()->getRepository('AppBundle:Language')->findAll()
+                "languages" => $this->getDoctrine()->getManager()->getRepository('AppBundle:Language')->findAll(),
+                "categories" => $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->findAll()
             )
         ))->add('loadNewVideo',SubmitType::class);
         $form->handleRequest($request);

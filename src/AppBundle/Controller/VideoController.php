@@ -33,18 +33,36 @@ class VideoController extends Controller
         ))->add('loadNewVideo',SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
-            /*$entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+
+            //Da modificare
+            $video->setLink("http://www.google.com");
+            $date = new \DateTime('now');
+            $video->setUploadingDate($date);
+            $video->setPrivacy("TUTTILOGUARDANO");
+
+            $video->getThumbnail()->move("thumbnails/");
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($video);
             $entityManager->flush();
-            if($form->get('createNewUser')->isClicked()) {
-                return $this->redirectToRoute('user_signin');
+            if($form->get('loadNewVideo')->isClicked()) {
+                return $this->redirectToRoute('homepage');
             }
-            return $this->render('default/index.html.twig');*/
+            return $this->render('default/index.html.twig');
         }
         else {
             //$form = $userSignUpHelper->setErrorMessages($form,$user);
         }
         return $this->render('website/load_video.html.twig', ['post' => $video, 'form' => $form->createView(), ]);
+    }
+
+    /**
+     * @Route("/delete", name="delete_video")
+     * @Method({"GET","POST"})
+     */
+    public function deleteVideoAction(Request $request) {
+        //$form = $this->createForm(VideoType::class)
+
     }
 
 

@@ -62,8 +62,7 @@ class VideoType extends AbstractType
             ))
             ->add('thumbnail', FileType::class, array(
                     'label' => 'Antepruma'
-                )
-            );
+            ));
         ;
     }
 

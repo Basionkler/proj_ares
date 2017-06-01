@@ -404,4 +404,28 @@ class User
     public function checkPassword($password) {
         return strcmp($this->password,$password) == 0;
     }
+
+    /**
+     * Add commentsLiked
+     *
+     * @param \AppBundle\Entity\Comment $commentsLiked
+     *
+     * @return User
+     */
+    public function addCommentsLiked(\AppBundle\Entity\Comment $commentsLiked)
+    {
+        $this->commentsLiked[] = $commentsLiked;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentsLiked
+     *
+     * @param \AppBundle\Entity\Comment $commentsLiked
+     */
+    public function removeCommentsLiked(\AppBundle\Entity\Comment $commentsLiked)
+    {
+        $this->commentsLiked->removeElement($commentsLiked);
+    }
 }

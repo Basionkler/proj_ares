@@ -15,7 +15,7 @@
                 <video controls style="width:720px;height:360px;" poster="poster.png">
                     <source src="{{ video.link }}" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2" />
                 </video>
-                {{ include ("comments/comment.html.twig") }}
+                {{ render(controller('AppBundle:Comments:commentVideo', {'video':video})) }}
             </center>
         {% endblock %}
         {% block javascripts %}{% endblock %}

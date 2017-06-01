@@ -26,14 +26,14 @@ class Playlist
 
     /**
      * Many Playlists have one User (creator)
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="playlist")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="playlists")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      */
     private $creator;
 
     /**
      * Many Playlists have many Videos
-     * @ORM\ManyToMany(targetEntity="Video", mappedBy="playlist")
+     * @ORM\ManyToMany(targetEntity="Video", mappedBy="playlists")
      */
     private $videos;
 

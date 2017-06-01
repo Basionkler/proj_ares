@@ -26,29 +26,36 @@ class Comment
 
     /**
      * Many Comments have one User
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="comment")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="commentsWritten")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      */
     private $user;
 
     /**
      * Many Comments have one Video
-     * @ORM\ManyToOne(targetEntity="Video", inversedBy="comment")
+     * @ORM\ManyToOne(targetEntity="Video", inversedBy="comments")
      * @ORM\JoinColumn(name="video_id", referencedColumnName="video_id")
      */
     private $video;
 
     /**
      * Many Comments have many CommentLikes
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="comment")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="commentsLiked")
      */
     private $commentLikes;
 
     /**
      * One Comment has many Answers
-     * @ORM\OneToMany(targetEntity="Answer", mappedBy="comment")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="comment")
      */
     private $answers;
+
+    /**
+     * One Comment has many Answers
+     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="answers")
+     * @ORM\JoinColumn(name="commentID", referencedColumnName="comment_id")
+     */
+    private $comment;
 
 
     public function __construct() {
@@ -92,11 +99,11 @@ class Comment
     /**
      * Set user
      *
-     * @param \AppBundle\Entity\Unit $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Comment
      */
-    public function setUser(\AppBundle\Entity\Unit $user = null)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -106,7 +113,7 @@ class Comment
     /**
      * Get user
      *
-     * @return \AppBundle\Entity\Unit
+     * @return \AppBundle\Entity\User
      */
     public function getUser()
     {

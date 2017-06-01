@@ -34,39 +34,12 @@ class VideoController extends Controller {
     /**
     * Get video from thumbnail
     * @Route("/{id}", name="videoById", requirements={"id":"\d+"})
-    * @Method({"GET"})
+    * @Method({"GET", "POST"})
     */
-    public function getVideo(Request $request, $id) {
+    public function getVideo($id) {
     	$entityManager = $this->getDoctrine()->getManager();
     	$video = $entityManager->getRepository('AppBundle:Video')->getVidById($id);
     	return $this->render('vids/videos.html.twig', ['video' => $video]); //Needs improvements
     }
 
-    /*
- 	 * Check if session is valid. If so, user can comment. SECURITY SYSTEM NEEDS TO BE DEVELOPED!!!
-     * @Route("/", name="comment")
-     * @Method({"GET", "POST"})
-	 */
-	public function commentVideoAction(Request $request) {
-
-		$comment = new Comment();
-
-   		$form = $this->createFormBuilder($comment)
-        	->add('text', TextType::class)
-        	->add('Invia Commento', SubmitType::class)
-        	->getForm();
-
-    	$form->handleRequest($request);
-
-    	if($form->isSubmitted() && $form->isValid()) {
-	        $comment = $form->getData();
-	        $entityManager = $this->getDoctrine()->getManager();
-	        $entityManager->persist($comment);
-	        $entityManager->flush();
-	        return $this->render('vids/videos.html.twig');
-	    }
-        return $this->render('vids/videos.html.twig', array(
-        'form' => $form->createView(),
-    	));
-	}
 }

@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repositories\UserRepository")
  * @ORM\Table(name="user")
  */
 class User
@@ -49,7 +49,6 @@ class User
      */
     private $evaluations;
 
-
     /**
      * One User has many Videos
      * @ORM\OneToMany(targetEntity="Video", mappedBy="user")
@@ -58,7 +57,7 @@ class User
 
     /**
      * One User has many Playlists
-     * @ORM\OneToMany(targetEntity="Playlist", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Playlist", mappedBy="creator")
      */
     private $playlists;
 
@@ -70,7 +69,7 @@ class User
 
     /**
      * Many Users have liked many Comments
-     * @ORM\ManyToMany(targetEntity="Comment", inversedBy="user")
+     * @ORM\ManyToMany(targetEntity="Comment", inversedBy="commentLikes")
      * @ORM\JoinTable(name="comment_like",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="comment_id", referencedColumnName="comment_id")}
@@ -79,9 +78,11 @@ class User
     private $commentsLiked;
 
     public function __construct() {
+        $this->evaluations = new ArrayCollection();
         $this->loadedVideos = new ArrayCollection();
-        $this->commentsLiked = new ArrayCollection();
+        $this->playlists = new ArrayCollection();
         $this->commentsWritten = new ArrayCollection();
+        $this->commentsLiked = new ArrayCollection();
     }
 
     /**
@@ -326,6 +327,7 @@ class User
         return $this->commentsWritten;
     }
 
+
     /**
      * Add commentsLiked
      *
@@ -333,22 +335,27 @@ class User
      *
      * @return User
      */
+
+    /*
     public function addCommentsLiked(\AppBundle\Entity\CommentLike $commentsLiked)
     {
         $this->commentsLiked[] = $commentsLiked;
 
         return $this;
     }
+    */ //NEED TO UNCOMMENT THAT
 
     /**
      * Remove commentsLiked
      *
      * @param \AppBundle\Entity\CommentLike $commentsLiked
      */
+    /*
     public function removeCommentsLiked(\AppBundle\Entity\CommentLike $commentsLiked)
     {
         $this->commentsLiked->removeElement($commentsLiked);
     }
+    */ //WE NEED TO UNCOMMENT THAT
 
     /**
      * Get commentsLiked
@@ -368,5 +375,33 @@ class User
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nickname
+     *
+     * @param string $nickname
+     *
+     * @return User
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Get nickname
+     *
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    public function checkPassword($password) {
+        return strcmp($this->password,$password) == 0;
     }
 }

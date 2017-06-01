@@ -26,14 +26,14 @@ class VideoEvaluation
 
     /**
      * Many VideoEvaluations have one User
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="video_evaluation")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="evaluations")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      */
     private $user;
 
     /**
      * Many VideoEvaluations have one Video
-     * @ORM\ManyToOne(targetEntity="Video", inversedBy="video_evaluation")
+     * @ORM\ManyToOne(targetEntity="Video", inversedBy="evaluations")
      * @ORM\JoinColumn(name="video_id", referencedColumnName="video_id")
      */
     private $video;

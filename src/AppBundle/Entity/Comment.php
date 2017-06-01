@@ -46,9 +46,16 @@ class Comment
 
     /**
      * One Comment has many Answers
-     * @ORM\OneToMany(targetEntity="Answer", mappedBy="comment")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="comment")
      */
     private $answers;
+
+    /**
+     * One Comment has many Answers
+     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="answers")
+     * @ORM\JoinColumn(name="commentID", referencedColumnName="comment_id")
+     */
+    private $comment;
 
 
     public function __construct() {
@@ -92,11 +99,11 @@ class Comment
     /**
      * Set user
      *
-     * @param \AppBundle\Entity\Unit $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Comment
      */
-    public function setUser(\AppBundle\Entity\Unit $user = null)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -106,7 +113,7 @@ class Comment
     /**
      * Get user
      *
-     * @return \AppBundle\Entity\Unit
+     * @return \AppBundle\Entity\User
      */
     public function getUser()
     {

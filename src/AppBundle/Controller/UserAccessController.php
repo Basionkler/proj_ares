@@ -62,8 +62,9 @@ class UserAccessController extends Controller
             $user = $em->getRepository('AppBundle:User')->findByNickname($nickname);
             if($user->checkPassword($password)) {
                 $session = $this->get('session');
-                $session->set('id', $user->getId());
+                $session->set('idUser', $user->getId());
                 $session->set('nickname', $user->getNickname());
+                $session->set('user', $user);
                 return $this->render('default/index.html.twig');
             }
         }

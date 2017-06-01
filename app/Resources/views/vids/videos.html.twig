@@ -8,10 +8,14 @@
     </head>
     <body>
         {% block body %}
+            {% if app.session %}
+                {{ app.session.get('nickname') }} <br><br>
+            {% endif %}
             <center>
                 <video controls style="width:720px;height:360px;" poster="poster.png">
                     <source src="{{ video.link }}" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2" />
                 </video>
+                {{ include ("comments/comment.html.twig") }}
             </center>
         {% endblock %}
         {% block javascripts %}{% endblock %}

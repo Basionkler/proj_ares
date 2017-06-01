@@ -10,8 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('text', null, [
                 'label' => 'label.text'
@@ -22,8 +21,7 @@ class UserType extends AbstractType
      * {@inheritdoc}
      */
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults([
             'data_class' => Comment::class,
         ]);

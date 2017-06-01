@@ -15,32 +15,37 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
     /**
-     * @Route("/", name="comment")
-     * @Method({"GET", "POST"})
+     * @Route("/")
      *
      */
 class CommentsController extends Controller {
+/*
+	/*
+ 	 * Check if session is valid. If so, user can comment. SECURITY SYSTEM NEEDS TO BE DEVELOPED!!!
+   * @Route("/", name="comment")
+   * @Method({"GET", "POST"})
+	 
+	public function commentVideoAction(Request $request) {
 
-	/* @Author Federico
- 	* @Param request
- 	* Check if session is valid. If so, user can comment
-	 */
-	public function commentVideo(Request $request) {
-		$securityContext = $this->container->get('security.authorization_checker');
-		if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) { // authenticated REMEMBERED
-			$comment = new Comment();
-			$form = $this->createForm(CommentType::class, $comment)->add('commentVideo',SubmitType::class);
-       		$form->handleRequest($request);
+		$comment = new Comment();
 
-       		/* How to add the video id? */
-       		if($form->isSubmitted() && $form->isValid()) {
-       			$comment->$user = $this->getUser();
-           		$entityManager = $this->getDoctrine()->getManager();
-            	$entityManager->persist($comment);
-            	$entityManager->flush();
-            	return $this->render('default/index.html.twig');
-       		}
-		}
-		return $errorComment; //TO DO
+    $form = $this->createFormBuilder($comment)
+        ->add('text', TextType::class)
+        ->add('Invia Commento', SubmitType::class)
+        ->getForm();
+
+    $form->handleRequest($request);
+
+    if($form->isSubmitted() && $form->isValid()) {
+        $comment = $form->getData();
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($comment);
+        $entityManager->flush();
+        return $this->render('vids/videos.html.twig');
+    }
+        return $this->render('vids/videos.html.twig', array(
+        'form' => $form->createView(),
+    ));
 	}
+*/
 }

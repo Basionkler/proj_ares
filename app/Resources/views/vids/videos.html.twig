@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Video{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+            <center>
+                <video controls style="width:720px;height:360px;" poster="poster.png">
+                    <source src="{{ video.link }}" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2" />
+                </video>
+            </center>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

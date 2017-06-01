@@ -13,11 +13,6 @@
             <a href=" {{ path('videoById', {'id':video.id}) }}">
                 <img src="{{ asset('thumbnails/' ~ video.thumbnail) }}" />
             </a>
-            <!--
-            <video controls style="width:180px;height:90px;" poster="poster.png">
-                <source src="{{video.link}}" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2" />
-            </video>
-            -->
             {%endfor%}
         {% endif %}
         <div class="col-md-6 text-center">

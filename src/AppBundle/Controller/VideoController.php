@@ -26,7 +26,7 @@ class VideoController extends Controller {
     public function getVideos() {
     	$entityManager = $this->getDoctrine()->getManager();
     	$videos = $entityManager->getRepository('AppBundle:Video')->findAll();
-    	return $this->render('default/index.html.twig', ['videos' => $videos]); //Needs improvements
+    	return $this->render('default/index.html.twig', array('videos' => $videos)); //Needs improvements
     }
 
     /**

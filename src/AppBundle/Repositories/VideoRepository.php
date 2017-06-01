@@ -15,6 +15,6 @@ class VideoRepository extends EntityRepository{
     }
 
     public function getVidById($id) {
-    	return $this->getEntityManager()->createQuery('SELECT v FROM AppBundle:Video v WHERE v.video_id LIKE :id');
+    	return $this->getEntityManager()->createQuery('SELECT v FROM AppBundle:Video v WHERE v.id LIKE :id')->setParameter('id',$id)->getOneOrNullResult();;
     }
 }
